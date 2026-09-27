@@ -1,0 +1,947 @@
+/* =========================================================
+   PASSWORD MANAGER - PROFESSIONAL UI
+   ========================================================= */
+
+/* ---------- BASE RESET ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --success: #10b981;
+    --success-dark: #059669;
+    --success-light: #ecfdf5;
+
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --danger-light: #fef2f2;
+
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+
+    --dark: #0f172a;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+
+    --border: #e2e8f0;
+    --background: #f8fafc;
+    --white: #ffffff;
+
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --shadow-small: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #dbeafe 0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #e0e7ff 0,
+            transparent 35%
+        ),
+        var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+h2 {
+    color: var(--dark);
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: var(--dark);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 36px;
+
+    border: 1px solid rgba(226, 232, 240, 0.8);
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    animation: containerAppear 0.35s ease;
+}
+
+@keyframes containerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   AUTHENTICATION
+   ========================================================= */
+
+#auth-container {
+    max-width: 480px;
+}
+
+/* Password Manager title */
+
+#auth-container > h2 {
+    text-align: center;
+
+    font-size: 1.8rem;
+
+    margin-bottom: 6px;
+}
+
+#auth-container > h2::before {
+    content: "🔐";
+
+    display: block;
+
+    font-size: 2.8rem;
+
+    margin-bottom: 12px;
+}
+
+/* Auth heading */
+
+#login-form h3,
+#register-form h3 {
+    text-align: center;
+
+    margin-bottom: 24px;
+
+    font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    font-size: 0.95rem;
+
+    color: var(--text);
+
+    background-color: #f8fafc;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:hover,
+select:hover {
+    border-color: #cbd5e1;
+}
+
+input:focus,
+select:focus {
+    background-color: #ffffff;
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        #3b82f6
+    );
+
+    color: white;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+button:hover {
+    background: linear-gradient(
+        135deg,
+        var(--primary-dark),
+        var(--primary)
+    );
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(37, 99, 235, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-btn {
+    background: #f1f5f9;
+
+    color: #475569;
+
+    border: 1px solid var(--border);
+
+    box-shadow: none;
+}
+
+.secondary-btn:hover {
+    background: #e2e8f0;
+
+    color: var(--dark);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+   ========================================================= */
+
+.logout-btn {
+    width: auto;
+
+    height: 42px;
+
+    padding: 0 17px;
+
+    font-size: 0.85rem;
+
+    background: var(--danger);
+
+    margin-bottom: 0;
+}
+
+.logout-btn:hover {
+    background: var(--danger-dark);
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+   ========================================================= */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 22px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.header h2 {
+    margin-bottom: 0;
+
+    font-size: 1.35rem;
+}
+
+.header h2::before {
+    content: "🔐 ";
+
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+#dashboard-container {
+    max-width: 850px;
+}
+
+#dashboard-container > p {
+    margin-bottom: 24px;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   DASHBOARD MENU
+   ========================================================= */
+
+#dashboard-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* Dashboard cards */
+
+.menu-btn {
+    position: relative;
+
+    width: 100%;
+
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: left;
+
+    padding: 0 25px;
+
+    background: white;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    box-shadow: var(--shadow-small);
+
+    margin-bottom: 0;
+
+    overflow: hidden;
+}
+
+.menu-btn::after {
+    content: "›";
+
+    position: absolute;
+
+    right: 25px;
+
+    font-size: 1.8rem;
+
+    font-weight: 300;
+
+    color: var(--text-light);
+
+    transition: transform 0.2s ease;
+}
+
+.menu-btn:hover {
+    background: var(--primary-light);
+
+    border-color: #bfdbfe;
+
+    color: var(--primary);
+
+    transform: translateX(3px);
+
+    box-shadow: var(--shadow-small);
+}
+
+.menu-btn:hover::after {
+    transform: translateX(4px);
+
+    color: var(--primary);
+}
+
+
+/* Individual dashboard icons */
+
+.menu-btn:nth-child(1)::before {
+    content: "💾";
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 16px;
+
+    background: #dbeafe;
+
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+}
+
+.menu-btn:nth-child(2)::before {
+    content: "👁";
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 16px;
+
+    background: #dcfce7;
+
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+}
+
+.menu-btn:nth-child(3)::before {
+    content: "🔑";
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-right: 16px;
+
+    background: #ede9fe;
+
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.sub-section {
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.sub-section h3 {
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    position: relative;
+}
+
+.sub-section h3::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -1px;
+
+    left: 0;
+
+    width: 45px;
+
+    height: 3px;
+
+    background: var(--primary);
+
+    border-radius: 3px;
+}
+
+
+/* =========================================================
+   PASSWORD STRENGTH
+   ========================================================= */
+
+#strength-meter {
+    padding: 12px 14px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--border);
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+}
+
+#strength-text {
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   GENERATED PASSWORD
+   ========================================================= */
+
+#generated-result {
+    background: var(--success-light);
+
+    border: 1px solid #a7f3d0;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-top: 18px;
+}
+
+#generated-result p {
+    margin-bottom: 12px;
+
+    color: #065f46;
+}
+
+#gen-output {
+    display: block;
+
+    margin-top: 8px;
+
+    padding: 15px;
+
+    background: white;
+
+    border: 1px solid #a7f3d0;
+
+    border-radius: 8px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 1.15rem;
+
+    letter-spacing: 2px;
+
+    color: #064e3b;
+
+    word-break: break-all;
+}
+
+
+/* Buttons inside generated result */
+
+#generated-result > div {
+    gap: 10px !important;
+}
+
+#generated-result > div button {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SAVED PASSWORD TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    margin-top: 18px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-small);
+}
+
+th,
+td {
+    padding: 14px 15px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 0.9rem;
+}
+
+th {
+    background: #f8fafc;
+
+    font-weight: 700;
+
+    color: #475569;
+
+    font-size: 0.82rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+}
+
+td {
+    color: var(--text);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   AUTH MESSAGE
+   ========================================================= */
+
+#auth-message {
+    margin-top: 16px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   KEY VERIFICATION
+   ========================================================= */
+
+#auth-prompt {
+    padding: 13px 15px;
+
+    background: var(--primary-light);
+
+    border: 1px solid #bfdbfe;
+
+    border-radius: 8px;
+
+    color: #1e40af;
+
+    font-size: 0.88rem;
+}
+
+#key-verification {
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+#key-verification input {
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+
+        align-items: flex-start;
+
+        padding-top: 20px;
+    }
+
+    .container {
+        padding: 24px;
+
+        border-radius: 14px;
+    }
+
+    #dashboard-container {
+        max-width: 100%;
+    }
+
+    .header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .header h2 {
+        font-size: 1.15rem;
+    }
+
+    .logout-btn {
+        flex-shrink: 0;
+    }
+
+    .menu-btn {
+        height: 75px;
+
+        padding: 0 16px;
+
+        font-size: 0.92rem;
+    }
+
+    .menu-btn::after {
+        right: 15px;
+    }
+
+    .menu-btn:nth-child(1)::before,
+    .menu-btn:nth-child(2)::before,
+    .menu-btn:nth-child(3)::before {
+        width: 38px;
+
+        height: 38px;
+
+        margin-right: 12px;
+    }
+
+    table {
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+
+        border-radius: 12px;
+    }
+
+    #auth-container > h2 {
+        font-size: 1.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .header .logout-btn {
+        width: 100%;
+    }
+
+    #generated-result > div {
+        flex-direction: column;
+    }
+
+    #generated-result > div button {
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        height: 48px;
+    }
+
+    button {
+        height: 48px;
+    }
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+    background: #bfdbfe;
+
+    color: #1e3a8a;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
